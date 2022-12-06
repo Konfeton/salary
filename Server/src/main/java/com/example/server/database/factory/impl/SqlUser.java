@@ -3,12 +3,10 @@ package com.example.server.database.factory.impl;
 
 import com.example.server.database.MyDatabase;
 import com.example.server.database.factory.IUser;
-import com.example.server.objects.Person;
-import com.example.server.objects.User;
+import com.example.server.entities.User;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class SqlUser implements IUser {
 

@@ -13,12 +13,12 @@
     <children>
         <TableView fx:id="table" layoutX="25.0" layoutY="62.0" prefHeight="200.0" prefWidth="700.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
             <columns>
-                <TableColumn fx:id="fieldSurname" prefWidth="100.79995346069336" text="Фамилия" />
-                <TableColumn fx:id="fieldName" prefWidth="120.0" text="Имя" />
-                <TableColumn fx:id="fieldPhone" prefWidth="130.4000244140625" text="Телефон" />
-                <TableColumn fx:id="fieldLogin" prefWidth="103.99993896484375" text="Логин" />
-                <TableColumn fx:id="fieldPass" prefWidth="120.79998779296875" text="Пароль" />
-                <TableColumn fx:id="fieldRole" minWidth="0.0" prefWidth="123.19996643066406" text="Доступ" />
+                <TableColumn fx:id="columnSurname" prefWidth="100.79995346069336" text="Фамилия" />
+                <TableColumn fx:id="columnName" prefWidth="120.0" text="Имя" />
+                <TableColumn fx:id="columnPhone" prefWidth="130.4000244140625" text="Телефон" />
+                <TableColumn fx:id="columnLogin" prefWidth="103.99993896484375" text="Логин" />
+                <TableColumn fx:id="columnPass" prefWidth="120.79998779296875" text="Пароль" />
+                <TableColumn fx:id="columnRole" minWidth="0.0" prefWidth="123.19996643066406" text="Доступ" />
             </columns>
         </TableView>
         <Label layoutX="267.0" layoutY="26.0" text="Управление пользователями">
@@ -27,13 +27,14 @@
          </font></Label>
         <Button layoutX="674.0" layoutY="284.0" mnemonicParsing="false" onAction="#findPerson" text="Поиск" />
         <Button layoutX="674.0" layoutY="24.0" mnemonicParsing="false" onAction="#toBack" text="Назад" />
-        <TextField layoutX="498.0" layoutY="284.0" prefHeight="26.0" prefWidth="160.0" promptText="Введите ФИО" />
+        <TextField fx:id="findField" layoutX="498.0" layoutY="284.0" prefHeight="26.0" prefWidth="160.0" promptText="Введите Фамилию" />
         <HBox alignment="CENTER" layoutX="25.0" layoutY="267.0" prefHeight="59.0" prefWidth="257.0" spacing="14.0">
             <children>
-                <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#addPerson" text="Добавить" />
+                <Button mnemonicParsing="false" onAction="#addPerson" text="Добавить" />
                 <Button mnemonicParsing="false" onAction="#editPerson" text="Редактировать" />
                 <Button mnemonicParsing="false" onAction="#deletePerson" text="Удалить" />
             </children>
         </HBox>
+      <Button fx:id="btnToFile" layoutX="337.0" layoutY="284.0" mnemonicParsing="false" onAction="#toSaveToFile" text="Сохранить в файл" />
     </children>
 </AnchorPane>

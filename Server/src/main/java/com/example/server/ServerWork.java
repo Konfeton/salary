@@ -5,8 +5,8 @@ import com.example.server.database.factory.IPerson;
 import com.example.server.database.factory.IUser;
 import com.example.server.database.factory.impl.SqlPerson;
 import com.example.server.database.factory.impl.SqlUser;
-import com.example.server.objects.Person;
-import com.example.server.objects.User;
+import com.example.server.entities.Person;
+import com.example.server.entities.User;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -91,6 +91,7 @@ public class ServerWork {
                 User user = (User) in.readObject();
                 IUser iUser = new SqlUser();
                 iUser.update(user);
+                break;
 
             }
             case "Person": {
@@ -98,6 +99,7 @@ public class ServerWork {
                 int id = (int) in.readObject();
                 IPerson iPerson = new SqlPerson();
                 iPerson.update(person, id);
+                break;
 
             }
         }
@@ -157,33 +159,32 @@ public class ServerWork {
     }
 
     private void searchEntity() throws IOException, ClassNotFoundException, SQLException {
-//        String type = (String) in.readObject();
-//        switch (type) {
-//            case "User": {
-//                String login = (String) in.readObject();
-//                IUser iUser = new SqlUser();
-//                ArrayList<User> list = iUser.findByLogin(login);
-//                out.writeObject(list);
-//                break;
-//            }
-//        }
+        String table = (String) in.readObject();
+        switch (table) {
+            case "Person": {
+                String surname = (String) in.readObject();
+                IPerson iPerson = new SqlPerson();
+                out.writeObject(iPerson.selectBySurname(surname));
+                break;
+            }
+        }
     }
 
     private void getEntityById() throws IOException, ClassNotFoundException, SQLException {
         String type = (String) in.readObject();
         switch (type) {
-            case "Person": {
-                int id = (int) in.readObject();
-                IPerson iPerson = new SqlPerson();
-                Person person = iPerson.selectById(id);
-                out.writeObject(person);
-                break;
-            }
             case "User": {
                 int id = (int) in.readObject();
                 IUser iUser = new SqlUser();
                 User user = iUser.selectById(id);
                 out.writeObject(user);
+                break;
+            }
+            case "Person": {
+                int id = (int) in.readObject();
+                IPerson iPerson = new SqlPerson();
+                Person person = iPerson.selectById(id);
+                out.writeObject(person);
                 break;
             }
         }

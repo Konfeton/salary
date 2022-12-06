@@ -1,8 +1,8 @@
 package com.example.client.controllers;
 
 import com.example.client.data.Data;
-import com.example.server.objects.Person;
-import com.example.server.objects.User;
+import com.example.server.entities.Person;
+import com.example.server.entities.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

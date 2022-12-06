@@ -1,7 +1,7 @@
 package com.example.client.data;
 
 import com.example.client.Connection;
-import com.example.server.objects.User;
+import com.example.server.entities.User;
 
 public class Data {
     private User user;

@@ -8,13 +8,13 @@
 <AnchorPane prefHeight="400.0" prefWidth="376.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.client.controllers.AdminPage">
     <children>
         <Label alignment="CENTER" layoutX="59.0" layoutY="92.0" prefHeight="18.0" prefWidth="258.0" text="Меню " />
-        <Button layoutX="287.0" layoutY="31.0" mnemonicParsing="false" text="Назад" />
+        <Button layoutX="287.0" layoutY="31.0" mnemonicParsing="false" onAction="#back" text="Назад" />
       <VBox alignment="TOP_CENTER" layoutX="59.0" layoutY="122.0" prefHeight="200.0" prefWidth="258.0" spacing="15.0">
          <children>
               <Button mnemonicParsing="false" onAction="#toShowUsers" prefHeight="26.0" prefWidth="246.0" text="Просмотр пользователей" />
               <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="246.0" text="Просмотр статистики (средняя ЗП)" />
-              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="246.0" text="Рассчёт заработной платы" />
-              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="246.0" text="Изменение персональной информации" />
+              <Button mnemonicParsing="false" onAction="#salaryCalculation" prefHeight="26.0" prefWidth="246.0" text="Рассчёт заработной платы" />
+              <Button mnemonicParsing="false" onAction="#toShowPersonalInfo" prefHeight="26.0" prefWidth="246.0" text="Изменение персональной информации" />
               <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="246.0" text="что-то ещё" />
          </children>
       </VBox>

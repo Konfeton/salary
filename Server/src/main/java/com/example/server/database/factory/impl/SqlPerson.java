@@ -2,8 +2,7 @@ package com.example.server.database.factory.impl;
 
 import com.example.server.database.MyDatabase;
 import com.example.server.database.factory.IPerson;
-import com.example.server.objects.Person;
-import com.example.server.objects.User;
+import com.example.server.entities.Person;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -50,6 +49,12 @@ public class SqlPerson implements IPerson {
     }
 
     @Override
+    public ArrayList<Person> selectBySurname(String surname) {
+        String query = "SELECT * FROM person WHERE last_name LIKE '%" + surname + "%'";
+        return getAll(query);
+    }
+
+    @Override
     public void update(Person person, int id) {
         String str = "UPDATE person SET last_name='"
                 + person.getLast_name()
@@ -82,8 +87,8 @@ public class SqlPerson implements IPerson {
         for (String[] items: result){
             person.setPerson_id(Integer.parseInt(items[0]));
             person.setUser_id(Integer.parseInt(items[1]));
-            person.setFirst_name(items[2]);
-            person.setLast_name(items[3]);
+            person.setLast_name(items[2]);
+            person.setFirst_name(items[3]);
             person.setPhone(items[4]);
         }
         return person;

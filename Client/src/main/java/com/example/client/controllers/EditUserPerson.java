@@ -2,10 +2,8 @@ package com.example.client.controllers;
 
 import com.example.client.data.Data;
 import com.example.client.data.UserPerson;
-import com.example.server.objects.Person;
-import com.example.server.objects.User;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import com.example.server.entities.Person;
+import com.example.server.entities.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +11,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -58,19 +55,28 @@ public class EditUserPerson {
             return;
         Data data = Data.getInstance();
 
-        User user = new User(data.getUserToEdit().getLogin(), data.getUserToEdit().getPassword(), data.getUserToEdit().getRole());
+        User user = new User(login.getText(), password.getText(), isUser);
         user.setId(data.getUserToEdit().getId());
 
         data.getConnection().writeInt(3);
         data.getConnection().writeLine("User");
         data.getConnection().writeObject(user);
 
-        Person person = new Person(user.getId(), data.getUserToEdit().getFirst_name(), data.getUserToEdit().getLast_name(), data.getUserToEdit().getPhone());
+        Person person = new Person(user.getId(), name.getText(), surname.getText(), phone.getText());
+        person.setPerson_id(userPerson.getId());
 
         data.getConnection().writeInt(3);
         data.getConnection().writeLine("Person");
         data.getConnection().writeObject(person);
         data.getConnection().writeObject(user.getId());
+
+        data.setUserToEdit(null);
+
+        Parent root = FXMLLoader.load(getClass().getResource("/com/example/client/user-control.fxml"));
+        Scene scene = new Scene(root);
+        stage =(Stage) ((Parent)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
 
     }
 

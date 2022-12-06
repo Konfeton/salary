@@ -1,7 +1,6 @@
 package com.example.server.database.factory;
 
-import com.example.server.objects.Person;
-import com.example.server.objects.User;
+import com.example.server.entities.User;
 
 import java.util.ArrayList;
 

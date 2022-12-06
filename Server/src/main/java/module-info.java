@@ -1,4 +1,4 @@
 module Server {
-    exports com.example.server.objects;
+    exports com.example.server.entities;
     requires java.sql;
 }

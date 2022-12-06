@@ -31,19 +31,21 @@ public class ThreadServer extends Thread {
         try {
             while (true) {
                 ServerWork s = new ServerWork(out, in, database);
-                Integer id = (Integer) in.readObject();
+                int id;
+                synchronized (this){
+                    id = (int) in.readObject();
+                }
                 s.getOperationId(id);
             }
-        } catch (IOException e) {
-            System.out.println("Client disconnected");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (IOException | ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         } finally {
             try {
                 database.close();
                 socket.close();
+                System.out.println("Client " + Server.clientNumber + " disconnected");
+                Server.clientNumber--;
+
             } catch (IOException e) {
                 e.printStackTrace();
             }

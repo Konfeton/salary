@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.util.Objects;
 
-import com.example.server.objects.User;
+import com.example.server.entities.User;
 import javafx.stage.Stage;
 
 public class MainController {
@@ -68,7 +68,9 @@ public class MainController {
 
     @FXML
     void initialize() throws IOException {
-        Data.getInstance().setConnection(new Connection(InetAddress.getByName(null), 8080));
-        System.out.println("Connected");
+        if (Data.getInstance().getConnection() == null) {
+            Data.getInstance().setConnection(new Connection(InetAddress.getByName(null), 8080));
+            System.out.println("Connected");
+        }
     }
 }

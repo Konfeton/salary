@@ -1,8 +1,5 @@
 package com.example.client.data;
 
-import com.example.server.objects.Person;
-import com.example.server.objects.User;
-
 public class UserPerson {
     private int id;
     private String login;
@@ -27,6 +24,20 @@ public class UserPerson {
         this.first_name = first_name;
         this.last_name = last_name;
         this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "UserPerson{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", person_id=" + person_id +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
     }
 
     public void setId(int id) {

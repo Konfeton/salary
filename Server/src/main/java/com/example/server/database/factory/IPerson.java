@@ -1,7 +1,6 @@
 package com.example.server.database.factory;
 
-import com.example.server.objects.Person;
-import com.example.server.objects.User;
+import com.example.server.entities.Person;
 
 import java.util.ArrayList;
 
@@ -11,6 +10,7 @@ public interface IPerson {
     Person selectById(int id);
     Person selectPersonByPhone(String phone);
     void delete(int id);
+    ArrayList<Person> selectBySurname(String surname);
 
     void update(Person person, int id);
 }
