@@ -56,7 +56,7 @@ public class MainController {
             if (Objects.equals(data.getUser().getRole(), "ADMIN")) {
                 root = FXMLLoader.load(getClass().getResource("/com/example/client/admin-page.fxml"));
             } else {
-                root = FXMLLoader.load(getClass().getResource("/com/example/client/user-page.fxml"));
+                root = FXMLLoader.load(getClass().getResource("/com/example/client/user-menu.fxml"));
             }
             Scene scene = new Scene(root);
             stage =(Stage) ((Parent)actionEvent.getSource()).getScene().getWindow();

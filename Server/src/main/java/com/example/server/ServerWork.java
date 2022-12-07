@@ -1,12 +1,9 @@
 package com.example.server;
 
 import com.example.server.database.MyDatabase;
-import com.example.server.database.factory.IPerson;
-import com.example.server.database.factory.IUser;
-import com.example.server.database.factory.impl.SqlPerson;
-import com.example.server.database.factory.impl.SqlUser;
-import com.example.server.entities.Person;
-import com.example.server.entities.User;
+import com.example.server.database.factory.*;
+import com.example.server.database.factory.impl.*;
+import com.example.server.entities.*;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -102,6 +99,13 @@ public class ServerWork {
                 break;
 
             }
+            case "Salary": {
+                Salary salary = (Salary) in.readObject();
+                ISalary iSalary = new SqlSalary();
+                iSalary.update(salary);
+                break;
+
+            }
         }
     }
     private void saveEntityAndGetId() throws IOException, ClassNotFoundException, SQLException {
@@ -118,6 +122,12 @@ public class ServerWork {
                 Person person = (Person) in.readObject();
                 IPerson iPerson = new SqlPerson();
                 iPerson.insert(person);
+                break;
+            }
+            case "Salary": {
+                Salary salary = (Salary) in.readObject();
+                ISalary iSalary = new SqlSalary();
+                iSalary.insert(salary);
                 break;
             }
         }
@@ -138,6 +148,12 @@ public class ServerWork {
                 out.writeObject(list);
                 break;
             }
+            case "Salary": {
+                ISalary iSalary = new SqlSalary();
+                ArrayList<Salary> list = iSalary.selectAll();
+                out.writeObject(list);
+                break;
+            }
         }
     }
 
@@ -153,6 +169,11 @@ public class ServerWork {
             case "Person": {
                 IPerson iPerson = new SqlPerson();
                 iPerson.delete(id);
+                break;
+            }
+            case "Salary": {
+                ISalary iSalary = new SqlSalary();
+                iSalary.delete(id);
                 break;
             }
         }
@@ -187,6 +208,28 @@ public class ServerWork {
                 out.writeObject(person);
                 break;
             }
+            case "Salary": {
+                int id = (int) in.readObject();
+                ISalary iSalary = new SqlSalary();
+                Salary salary = iSalary.selectById(id);
+                out.writeObject(salary);
+                break;
+            }
+            case "Category": {
+                int id = (int) in.readObject();
+                ICategory iCategory = new SqlCategory();
+                Category category = iCategory.selectById(id);
+                out.writeObject(category);
+                break;
+            }
+            case "FormOfPayment": {
+                int id = (int) in.readObject();
+                IFormOfPayment iFormOfPayment = new SqlFormOfPayment();
+                FormOfPayment formOfPayment = iFormOfPayment.selectById(id);
+                out.writeObject(formOfPayment);
+                break;
+            }
+
         }
     }
 

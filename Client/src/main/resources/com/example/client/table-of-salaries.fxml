@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="370.0" prefWidth="614.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.client.controllers.SalaryTableController">
+    <children>
+        <TableView fx:id="table" layoutX="25.0" layoutY="62.0" prefHeight="200.0" prefWidth="572.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
+            <columns>
+                <TableColumn fx:id="columnSurname" prefWidth="100.79995346069336" text="Фамилия" />
+                <TableColumn fx:id="columnName" prefWidth="120.0" text="Имя" />
+                <TableColumn fx:id="columnSalary" minWidth="0.0" prefWidth="123.19996643066406" text="Зарплата" />
+            <TableColumn fx:id="columnFormOfPayment" minWidth="0.0" prefWidth="123.19996643066406" text="Форма оплаты" />
+            <TableColumn fx:id="columnRank" minWidth="0.0" prefWidth="103.20004272460938" text="Разряд" />
+            </columns>
+        </TableView>
+        <Label layoutX="252.0" layoutY="26.0" text="Расчёт зарплат">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+        <Button layoutX="538.0" layoutY="283.0" mnemonicParsing="false" onAction="#findPerson" text="Поиск" />
+        <Button layoutX="540.0" layoutY="24.0" mnemonicParsing="false" onAction="#toBack" text="Назад" />
+        <TextField fx:id="findField" layoutX="398.0" layoutY="283.0" prefHeight="26.0" prefWidth="128.0" promptText="Введите Фамилию" />
+        <HBox alignment="CENTER" layoutX="25.0" layoutY="267.0" prefHeight="59.0" prefWidth="315.0" spacing="14.0">
+            <children>
+                <Button mnemonicParsing="false" onAction="#calculateSalary" text="Рассчитать зарплату" />
+                <Button mnemonicParsing="false" onAction="#editSalary" text="Редактировать" />
+                <Button mnemonicParsing="false" onAction="#deleteSalary" text="Удалить" />
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class AdminPage {
     private Stage stage;
@@ -26,6 +25,10 @@ public class AdminPage {
         changePage(event, "/com/example/client/edit-admin.fxml");
     }
 
+    public void salaryCalculation(ActionEvent event) throws IOException {
+        changePage(event, "/com/example/client/table-of-salaries.fxml");
+    }
+
     private void changePage(ActionEvent event, String url) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(url));
         Scene scene = new Scene(root);
@@ -34,6 +37,7 @@ public class AdminPage {
         stage.show();
     }
 
-    public void salaryCalculation(ActionEvent event) {
+    public void toShowStatistics(ActionEvent event) throws IOException {
+        changePage(event, "/com/example/client/statistics.fxml");
     }
 }

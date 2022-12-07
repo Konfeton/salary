@@ -31,10 +31,7 @@ public class ThreadServer extends Thread {
         try {
             while (true) {
                 ServerWork s = new ServerWork(out, in, database);
-                int id;
-                synchronized (this){
-                    id = (int) in.readObject();
-                }
+                int id = (int) in.readObject();
                 s.getOperationId(id);
             }
         } catch (IOException | ClassNotFoundException | SQLException e) {

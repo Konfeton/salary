@@ -6,8 +6,17 @@ import com.example.server.entities.User;
 public class Data {
     private User user;
     private UserPerson userToEdit;
+    private int personId;
     private static Data instance;
     private Connection connection;
+
+    public int getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(int personId) {
+        this.personId = personId;
+    }
 
     public UserPerson getUserToEdit() {
         return userToEdit;

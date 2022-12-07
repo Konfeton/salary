@@ -61,7 +61,6 @@ public class UserControl {
             @Override
             public void changed(ObservableValue<? extends UserPerson> observableValue, UserPerson oldVal, UserPerson newVal) {
                 if (newVal != null) {
-                    System.out.println(newVal.getId());
                     data.setUserToEdit(newVal);
                 }
             }
@@ -74,7 +73,6 @@ public class UserControl {
     }
 
     private void refreshTable() throws IOException, ClassNotFoundException {
-
         columnSurname.setCellValueFactory(new PropertyValueFactory<UserPerson, String>("last_name"));
         columnName.setCellValueFactory(new PropertyValueFactory<UserPerson, String>("first_name"));
         columnRole.setCellValueFactory(new PropertyValueFactory<UserPerson, String>("role"));
@@ -113,7 +111,6 @@ public class UserControl {
             data.getConnection().writeObject(6);
             data.getConnection().writeObject("Person");
             data.getConnection().writeObject(findField.getText());
-            //TODO: Закончить поиск
             list.clear();
             ArrayList<Person> persons = (ArrayList<Person>) data.getConnection().getObject();
             for (Person person :
@@ -125,7 +122,6 @@ public class UserControl {
                 UserPerson userPerson =
                         new UserPerson(user.getId(), user.getLogin(), user.getPassword(), user.getRole(),
                                 person.getPerson_id(), person.getFirst_name(), person.getLast_name(), person.getPhone());
-                System.out.println(userPerson.toString());
                 if (user.getId() != data.getUser().getId() && person.getUser_id() == user.getId()) {
                     list.add(userPerson);
                 }

@@ -17,8 +17,7 @@ public class SqlPerson implements IPerson {
     @Override
     public ArrayList<Person> selectAll() {
         String str = "SELECT * FROM person";
-        database.select(str);
-        return null;
+        return getAll(str);
     }
 
     @Override
@@ -73,8 +72,8 @@ public class SqlPerson implements IPerson {
             Person person = new Person();
             person.setPerson_id(Integer.parseInt(items[0]));
             person.setUser_id(Integer.parseInt(items[1]));
-            person.setFirst_name(items[2]);
-            person.setLast_name(items[3]);
+            person.setLast_name(items[2]);
+            person.setFirst_name(items[3]);
             person.setPhone(items[4]);
             persons.add(person);
         }
